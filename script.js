@@ -25,6 +25,7 @@ const sliders = {
     max: 255,
   },
 };
+var hex;
 
 // Initialize
 function init() {
@@ -102,6 +103,12 @@ function change(id) {
       `linear-gradient(to right, ${backgrounds[i].join(", ")})`,
     );
   }
+
+  // Set hex value
+  hex = F.rgb2hex(current).slice(0, -2);
+  $("#hex")
+    .text(hex)
+    .css("color", current.v > 50 && current.s < 50 ? "black" : "white");
 }
 
 // Set sliders to random color
@@ -111,4 +118,9 @@ function random() {
   $("#g").val(rgb.g);
   $("#b").val(rgb.b);
   change("r");
+}
+
+// Copy hex value to clipboard
+function copy() {
+  F.copy(hex);
 }
