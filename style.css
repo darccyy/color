@@ -1,7 +1,21 @@
 body {
-  background-color: #111;
+  background-color: #080808;
   color: white;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+h1 button {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  font-size: 20px;
+}
+h1 button:active {
+  transform: scale(1.1);
 }
 
 #display {
@@ -27,7 +41,23 @@ body {
   width: 5px;
   height: 40px;
   background: transparent;
-  border: 1px solid white;
-  outline: 1px solid black;
+  border: 1px solid #fff;
   cursor: pointer;
+}
+
+.footer {
+  position: fixed;
+  display: inline-block;
+  bottom: 10px;
+  right: 10px;
+  padding: 7px;
+  border-radius: 10px;
+  background-color: #111a;
+  color: #ddd;
+}
+.footer:not(:hover) {
+  text-decoration: none;
+}
+.footer:focus-visible {
+  outline: 2px solid white;
 }

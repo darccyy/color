@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Colour</title>
+    <title>Colour Sliders</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
@@ -9,15 +9,30 @@
 
     <link rel="stylesheet" type="text/css" href="./style.css" />
 
-    <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
-    <script type="text/javascript" src="https://fortissimojs.github.io/index.vanilla.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://code.jquery.com/jquery-latest.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://fortissimojs.github.io/index.vanilla.min.js"
+    ></script>
     <script type="text/javascript" src="./script.js"></script>
+
+    <link rel="shortcut icon" href="./favicon.png" type="image/png" />
   </head>
   <body onload="init()">
-    <h1>Colour Sliders</h1>
+    <h1 title="Colour Sliders">
+      Colour Sliders <button onclick="random()" title="Random!">🔃</button>
+    </h1>
 
     <div id="display"></div>
 
     <div id="sliders"></div>
+
+    <a class="footer" href="https://github.com/darccyy">
+      <span>Made by</span>
+      <span title="That's me!">Darcy</span>
+    </a>
   </body>
 </html>

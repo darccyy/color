@@ -1,4 +1,4 @@
-var sliders = {
+const sliders = {
   h: {
     name: "Hue",
     max: 360,
@@ -26,17 +26,14 @@ var sliders = {
   },
 };
 
+// Initialize
 function init() {
   var html = "";
-  var rgb = F.hex2rgb(F.randomHex());
-  console.log(rgb);
   for (var i in sliders) {
     var item = sliders[i];
     html += `
       <article>
-        <input id="${i}" type="range" min="0" max="${item.max}" value="${
-      rgb[i] || 0
-    }" oninput="change('${i}')" title="${item.name}" />
+        <input id="${i}" type="range" min="0" max="${item.max}" value="0" oninput="change('${i}')" title="${item.name}" />
         <label>
           ${item.name}
           <span id="value_${i}">0</span>
@@ -45,15 +42,19 @@ function init() {
     `;
   }
   $("#sliders").html(html);
-  change("r");
+
+  random();
 }
 
+// Oninput for sliders, after random()
 function change(id) {
+  // Set current values
   var current = {};
   for (var i in sliders) {
     current[i] = parseInt($("#" + i).val());
   }
 
+  // Standardize colors
   var color;
   if ("rgb".includes(id)) {
     var hsv = F.rgb2hsv(current);
@@ -72,11 +73,13 @@ function change(id) {
   }
   $("#display").css("background-color", "rgb(" + color + ")");
 
+  // Reset current values
   for (var i in sliders) {
     current[i] = parseInt($("#" + i).val());
     $("#value_" + i).text(current[i]);
   }
 
+  // Set slider gradients
   var resolution = 20;
   var backgrounds = {
     h: new Array(resolution + 1).fill(false).map((item, index) => {
@@ -101,37 +104,11 @@ function change(id) {
   }
 }
 
-F.rgb2hsv = function (rgb) {
-  var { r, g, b } = rgb;
-
-  var max = Math.max(r, g, b),
-    min = Math.min(r, g, b),
-    d = max - min,
-    h,
-    s = max === 0 ? 0 : d / max,
-    v = max / 255;
-
-  switch (max) {
-    case min:
-      h = 0;
-      break;
-    case r:
-      h = g - b + d * (g < b ? 6 : 0);
-      h /= 6 * d;
-      break;
-    case g:
-      h = b - r + d * 2;
-      h /= 6 * d;
-      break;
-    case b:
-      h = r - g + d * 4;
-      h /= 6 * d;
-      break;
-  }
-
-  return {
-    h: h * 360,
-    s: s * 100,
-    v: v * 100,
-  };
-};
+// Set sliders to random color
+function random() {
+  var rgb = F.hex2rgb(F.randomHex());
+  $("#r").val(rgb.r);
+  $("#g").val(rgb.g);
+  $("#b").val(rgb.b);
+  change("r");
+}
