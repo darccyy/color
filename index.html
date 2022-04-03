@@ -23,11 +23,19 @@
   </head>
   <body onload="init()">
     <h1 title="Colour Sliders">
-      Colour Sliders <button onclick="random()" title="Random!">🔃</button>
+      Colour Sliders <button onclick="roll()" title="Random!">🔃</button>
     </h1>
 
-    <div id="display" onclick="copy()" title="Click to copy!">
-      <h1 id="hex">#B80A4F</h1>
+    <div class="display">
+      <div id="darker" onclick="copyValue(this)"></div>
+      <div id="dark" onclick="copyValue(this)"></div>
+
+      <div id="light" onclick="copyValue(this)"></div>
+      <div id="lighter" onclick="copyValue(this)"></div>
+
+      <div id="color" onclick="copyValue(this)">
+        <h1 id="hex">#B80A4F</h1>
+      </div>
     </div>
 
     <div id="sliders"></div>

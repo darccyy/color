@@ -18,14 +18,46 @@ h1 button:active {
   transform: scale(1.1);
 }
 
-#display {
-  display: flex;
-  width: 100%;
+.display {
+  position: relative;
   height: 100px;
-  border-radius: 5px;
+}
+.display div {
+  position: absolute;
+  width: 10%;
+  height: 100%;
   background-color: black;
+  cursor: pointer;
+}
+.display div:active {
+  transform: scale(1.015);
+  filter: brightness(105%);
+  transition: all 0.05s;
+}
+.display div#color {
+  display: flex;
+  width: 70%;
+  left: 15%;
   justify-content: center;
   align-items: center;
+}
+.display div#darker {
+  left: 0;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.display div#dark {
+  width: 5%;
+  left: 10%;
+}
+.display div#light {
+  width: 5%;
+  right: 10%;
+}
+.display div#lighter {
+  right: 0;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 #sliders {
@@ -39,13 +71,14 @@ h1 button:active {
   width: 200px;
   height: 30px;
   border-radius: 5px;
+  cursor: pointer;
 }
 #sliders article input::-moz-range-thumb {
   width: 5px;
   height: 40px;
   background: transparent;
   border: 1px solid #fff;
-  cursor: pointer;
+  cursor: ew-resize;
 }
 
 .footer {
