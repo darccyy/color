@@ -85,11 +85,11 @@ function change(id) {
     var hsv = F.rgb2hsv(current);
     // Preserve HSV when RGB = 0 or 255
     if (hsv.s && hsv.v) {
-      // lastHsv = hsv;
+      lastHsv = hsv;
     } else if (lastHsv) {
-      // hsv.h = lastHsv.h;
+      hsv.h = lastHsv.h;
       if (current.r + current.g + current.b === 0) {
-        // hsv.s = lastHsv.s;
+        hsv.s = lastHsv.s;
       }
     }
 
@@ -112,11 +112,11 @@ function change(id) {
     var hsv = F.rgb2hsv(rgb);
     // Preserve HSV when RGB = 0 or 255
     if (hsv.s && hsv.v) {
-      // lastHsv = hsv;
+      lastHsv = hsv;
     } else if (lastHsv) {
-      // hsv.h = lastHsv.h;
+      hsv.h = lastHsv.h;
       if (rgb.r + rgb.g + rgb.b === 0) {
-        // hsv.s = lastHsv.s;
+        hsv.s = lastHsv.s;
       }
     }
 
@@ -142,10 +142,10 @@ function change(id) {
   // Set color of display and tones
   var tones = {
     color: [0, 0],
-    darker: [10, -20],
-    dark: [5, -10],
-    light: [-5, 10],
-    lighter: [-10, 20],
+    darker: [15, -25],
+    dark: [10, -15],
+    light: [-15, 10],
+    lighter: [-25, 20],
   };
   var multiply = 0.5;
   var hsv = F.rgb2hsv(current);
