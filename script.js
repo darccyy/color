@@ -218,7 +218,6 @@ function copyValue(element) {
   if ($("#hex").is(":focus-within")) {
     return;
   }
-  console.warn("COPIED");
   F.copy($(element).attr("value"));
 }
 
