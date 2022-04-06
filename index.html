@@ -22,8 +22,9 @@
     <link rel="shortcut icon" href="./favicon.png" type="image/png" />
   </head>
   <body onload="init()">
-    <h1 title="Colour Sliders">
-      Colour Sliders <button onclick="roll()" title="Random!">🔃</button>
+    <h1 class="header" title="Colour Sliders">
+      <span class="text"> Colour Sliders </span>
+      <button onclick="roll()" title="Random!">🔃</button>
     </h1>
 
     <div class="display">
@@ -34,7 +35,15 @@
       <div id="lighter" onclick="copyValue(this)"></div>
 
       <div id="color" onclick="copyValue(this)">
-        <h1 id="hex">#B80A4F</h1>
+        <h1>
+          <input
+            id="hex"
+            type="text"
+            value="#B80A4F"
+            oninput="changeHex()"
+            maxlength="7"
+          />
+        </h1>
       </div>
     </div>
 
@@ -46,3 +55,22 @@
     </a>
   </body>
 </html>
+
+<contain style="display: none; visibility: hidden">
+  <template name="slider">
+    <article class="slider" title="{name}">
+      <input
+        id="{id}"
+        type="range"
+        min="0"
+        max="{max}"
+        value="0"
+        oninput="change('{id}')"
+      />
+      <span class="label">
+        {name}
+        <span id="value_{id}">-</span>
+      </span>
+    </article>
+  </template>
+</contain>

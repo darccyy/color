@@ -43,17 +43,11 @@ var lastHsv;
 // Initialize
 function init() {
   var html = "";
-  for (var i in sliders) {
-    var item = sliders[i];
-    html += `
-      <article>
-        <input id="${i}" type="range" min="0" max="${item.max}" value="0" oninput="change('${i}')" title="${item.name}" />
-        <label>
-          ${item.name}
-          <span id="value_${i}">0</span>
-        </label>
-      </article>
-    `;
+  for (var id in sliders) {
+    html += F.format($("template[name=slider]").html(), {
+      ...sliders[id],
+      id,
+    });
   }
   $("#sliders").html(html);
 
@@ -136,7 +130,7 @@ function change(id) {
   // Set hex value as text
   var hex = F.rgb2hex(current, true);
   $("#hex")
-    .text(hex)
+    .val(hex)
     .css("color", current.v > 50 && current.s < 50 ? "black" : "white");
 
   // Set color of display and tones
@@ -220,7 +214,30 @@ async function roll() {
 
 // Copy hex value to clipboard
 function copyValue(element) {
+  // Don't activate if input box focused
+  if ($("#hex").is(":focus-within")) {
+    return;
+  }
+  console.warn("COPIED");
   F.copy($(element).attr("value"));
+}
+
+// User change hex value with input box
+function changeHex() {
+  var hex = $("#hex").val();
+  // Validate hex - optional #, only length 6
+  if (!/^#/.test(hex)) {
+    hex = "#" + hex;
+  }
+  if (!/^#[A-Fa-f0-9]{6}$/.test(hex)) {
+    return;
+  }
+
+  var rgb = F.hex2rgb(hex);
+  $("#r").val(rgb.r);
+  $("#g").val(rgb.g);
+  $("#b").val(rgb.b);
+  change("r");
 }
 
 // Convert CMY to RGB
