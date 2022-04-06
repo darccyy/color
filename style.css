@@ -36,9 +36,8 @@ body {
   cursor: pointer;
 }
 .display div:active:not(:focus-within) {
-  transform: scale(1.015);
+  transform: scale(1.02);
   filter: brightness(105%);
-  transition: all 0.05s;
 }
 .display div#color {
   display: flex;
