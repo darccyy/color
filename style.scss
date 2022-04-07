@@ -8,34 +8,9 @@ body {
   margin-top: 5px;
   margin-bottom: 5px;
 
-  .text {
-    background: rgba(0, 0, 0, 0)
-      linear-gradient(
-        to right,
-        #ff5454ff,
-        #ff8754ff,
-        #ffbb54ff,
-        #ffee54ff,
-        #ddff54ff,
-        #aaff54ff,
-        #76ff54ff,
-        #54ff65ff,
-        #54ff98ff,
-        #54ffccff,
-        #54ffffff,
-        #54ccffff,
-        #5498ffff,
-        #5465ffff,
-        #7654ffff,
-        #aa54ffff,
-        #dd54ffff,
-        #ff54eeff,
-        #ff54bbff,
-        #ff5487ff,
-        #ff5454ff
-      )
-      repeat scroll 0%;
-    background-clip: text;
+  #header {
+    background-color: white;
+    background-clip: text !important;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }

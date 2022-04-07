@@ -160,6 +160,14 @@ function change(id) {
   // Set slider gradients
   var resolution = 20;
   var backgrounds = {
+    header: new Array(resolution + 1).fill(false).map((item, index) => {
+      return F.hsv2hex({
+        h: (index * (360 / resolution) + current.h) % 360,
+        s: F.border(current.s * (current.v / 100 + 0.3), 30, 70),
+        v: F.border(current.v, 40, 100),
+      });
+    }),
+
     h: new Array(resolution + 1).fill(false).map((item, index) => {
       return F.hsv2hex({
         h: index * (360 / resolution),
