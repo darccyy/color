@@ -147,8 +147,8 @@ function change(id) {
     var value = F.hsv2hex(
       {
         ...hsv,
-        s: F.border(hsv.s + tones[i][0] * multiply, 0, 100),
-        v: F.border(hsv.v + tones[i][1] * multiply, 0, 100),
+        s: F.clamp(hsv.s + tones[i][0] * multiply, 0, 100),
+        v: F.clamp(hsv.v + tones[i][1] * multiply, 0, 100),
       },
       true,
     );
@@ -163,8 +163,8 @@ function change(id) {
     header: new Array(resolution + 1).fill(false).map((item, index) => {
       return F.hsv2hex({
         h: (index * (360 / resolution) + current.h) % 360,
-        s: F.border(current.s * (current.v / 100 + 0.3), 30, 70),
-        v: F.border(current.v, 40, 100),
+        s: F.clamp(current.s * (current.v / 100 + 0.3), 30, 70),
+        v: F.clamp(current.v, 40, 100),
       });
     }),
 
